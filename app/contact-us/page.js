@@ -25,7 +25,15 @@ export default function ContactUs() {
       title: "Address",
       content: "Suite C2, Trow Plaza, Jabi, Abuja.",
     },
-    { icon: Phone, title: "Phone", content: "+2349030135338", "+2348056982944", "+2347056990064" },
+    {
+      icon: Phone,
+      title: "Phone",
+      content: [
+        "+2349030135338",
+        "+2348056982944",
+        "+2347056990064",
+      ],
+    },
     { icon: Mail, title: "Email", content: "famkrishealthcare@thefhci.org" },
   ];
 
