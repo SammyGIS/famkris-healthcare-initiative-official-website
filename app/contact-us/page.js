@@ -23,15 +23,15 @@ export default function ContactUs() {
     {
       icon: MapPin,
       title: "Address",
-      content: "Suite C2, Trow Plaza, Jabi, Abuja.",
+      content: "571 James Onoja Street, Wuye District, Abuja., Abuja, 900271, FCT, NG",
     },
     {
       icon: Phone,
       title: "Phone",
       content: [
-        "+2349030135338",
-        "+2348056982944",
-        "+2347056990064",
+        "+234 903 013 5338",
+        "+234 805 698 2944",
+        "+234 705 699 0064",
       ],
     },
     { icon: Mail, title: "Email", content: "famkrishealthcare@thefhci.org" },
@@ -40,16 +40,19 @@ export default function ContactUs() {
   const socialMedia = [
     {
       icon: Facebook,
-      href: "https://web.facebook.com/famkrishealthcareinitiative/",
+      href: "https://web.facebook.com/famkrishealthcareinitiative",
       color: "text-green-600",
     },
     {
       icon: Twitter,
-      href: "https://twitter.com/thefhci",
+      href: "https://x.com/FamkrisHCI",
       color: "text-green-600",
     },
-    // { icon: Linkedin, href: "#", color: "text-green-600" },
-    // { icon: Youtube, href: "#", color: "text-green-600" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/thefhci/",
+      color: "text-green-600",
+    },
   ];
 
   return (
@@ -113,7 +116,15 @@ export default function ContactUs() {
                 <h3 className="text-2xl font-semibold text-gray-800 mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-700">{item.content}</p>
+                {Array.isArray(item.content) ? (
+                  <div className="text-gray-700 space-y-1">
+                    {item.content.map((phone, idx) => (
+                      <p key={idx}>{phone}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-gray-700">{item.content}</p>
+                )}
               </motion.div>
             ))}
           </div>

@@ -4,11 +4,13 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import DonateModal from "./components/DonateModal";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredMenu, setHoveredMenu] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isDonateModalOpen, setIsDonateModalOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -121,11 +123,10 @@ export default function Navbar() {
             >
               <Link
                 href={menuItem.link || "#"}
-                className={`px-4 py-2 rounded-md hover:bg-green-100 hover:text-green-600 transition-all duration-300 ${
-                  pathname === menuItem.link
+                className={`px-4 py-2 rounded-md hover:bg-green-100 hover:text-green-600 transition-all duration-300 ${pathname === menuItem.link
                     ? "bg-green-100 text-green-600"
                     : ""
-                }`}
+                  }`}
               >
                 {menuItem.label}
               </Link>
@@ -169,12 +170,12 @@ export default function Navbar() {
           >
             Tools
           </Link>
-          <Link
-            href="/contact"
+          <button
+            onClick={() => setIsDonateModalOpen(true)}
             className="bg-green-500 text-white px-5 py-2 rounded hover:shadow-green-500/50 hover:bg-green-700 transition-all duration-300"
           >
             Donate
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -184,19 +185,16 @@ export default function Navbar() {
             className="relative z-50 text-green-600 focus:outline-none"
           >
             <div
-              className={`w-6 h-0.5 bg-green-600 transition-transform duration-300 ${
-                isMenuOpen ? "rotate-45 translate-y-1.5" : ""
-              }`}
+              className={`w-6 h-0.5 bg-green-600 transition-transform duration-300 ${isMenuOpen ? "rotate-45 translate-y-1.5" : ""
+                }`}
             ></div>
             <div
-              className={`w-6 h-0.5 bg-green-600 mt-1.5 transition-all duration-300 ${
-                isMenuOpen ? "opacity-0" : "opacity-100"
-              }`}
+              className={`w-6 h-0.5 bg-green-600 mt-1.5 transition-all duration-300 ${isMenuOpen ? "opacity-0" : "opacity-100"
+                }`}
             ></div>
             <div
-              className={`w-6 h-0.5 bg-green-600 mt-1.5 transition-transform duration-300 ${
-                isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-              }`}
+              className={`w-6 h-0.5 bg-green-600 mt-1.5 transition-transform duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+                }`}
             ></div>
           </button>
         </div>
@@ -229,16 +227,24 @@ export default function Navbar() {
             >
               Tools
             </Link>
-            <Link
-              href="/contact"
+            <button
+              onClick={() => {
+                setIsDonateModalOpen(true);
+                toggleMenu();
+              }}
               className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-all duration-300"
-              onClick={toggleMenu}
             >
               Donate
-            </Link>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Donate Modal */}
+      <DonateModal
+        isOpen={isDonateModalOpen}
+        onClose={() => setIsDonateModalOpen(false)}
+      />
     </nav>
   );
 }

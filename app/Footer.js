@@ -44,15 +44,18 @@ export default function Footer() {
     {
       icon: <FaFacebook className="h-6 w-6" />,
       alt: "Facebook",
-      link: "https://web.facebook.com/famkrishealthcareinitiative/",
+      link: "https://web.facebook.com/famkrishealthcareinitiative",
     },
     {
       icon: <FaXTwitter className="h-6 w-6" />,
-      alt: "Instagram",
-      link: "https://twitter.com/thefhci",
+      alt: "Twitter",
+      link: "https://x.com/FamkrisHCI",
     },
-    // { icon: <FaLinkedin className="h-6 w-6" />, alt: "LinkedIn", link: "#" },
-    // { icon: <FaYoutube className="h-6 w-6" />, alt: "YouTube", link: "#" },
+    {
+      icon: <FaLinkedin className="h-6 w-6" />,
+      alt: "LinkedIn",
+      link: "https://www.linkedin.com/company/thefhci/",
+    },
   ];
 
   const navigationLinks = [
@@ -77,8 +80,8 @@ export default function Footer() {
               FamKris HealthCare Initiatives
             </h3>
           </div>
-          <p>CSuite C2, Trow Plaza, Jabi, </p>
-          <p>FCT, Abuja.</p>
+          <p>571 James Onoja Street, Wuye District, Abuja.,</p>
+          <p>Abuja, 900271, FCT, NG</p>
           <div className="flex space-x-4 mt-4">
             {socialLinks.map((social, index) => (
               <Link key={index} href={social.link} className="hover:opacity-80">
