@@ -62,11 +62,10 @@ const HeroCarousel = ({ slider }) => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === currentIndex
-                  ? "bg-white w-6"
-                  : "bg-white/50 hover:bg-white/70"
-              }`}
+              className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
+                ? "bg-white w-6"
+                : "bg-white/50 hover:bg-white/70"
+                }`}
             />
           ))}
         </div>
