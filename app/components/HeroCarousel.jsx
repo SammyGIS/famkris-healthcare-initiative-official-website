@@ -41,36 +41,6 @@ const HeroCarousel = ({ slider }) => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="absolute inset-0 z-20">
-        {/* Navigation Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 bg-black/30 rounded-full hover:bg-black/50 transition-colors"
-        >
-          <ChevronLeft className="text-white w-8 h-8" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 bg-black/30 rounded-full hover:bg-black/50 transition-colors"
-        >
-          <ChevronRight className="text-white w-8 h-8" />
-        </button>
-
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-          {slider.slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
-                ? "bg-white w-6"
-                : "bg-white/50 hover:bg-white/70"
-                }`}
-            />
-          ))}
-        </div>
-      </div>
-
       {/* Slides Container */}
       <div className="relative w-full h-full">
         <AnimatePresence initial={false} custom={direction}>
@@ -91,7 +61,7 @@ const HeroCarousel = ({ slider }) => {
                 priority
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white px-4">
+              <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center text-white px-4 z-10">
                 <motion.h2
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -112,6 +82,7 @@ const HeroCarousel = ({ slider }) => {
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.6 }}
+                  className="relative z-20"
                 >
                   <Link
                     href="/what-we-do"
@@ -124,6 +95,37 @@ const HeroCarousel = ({ slider }) => {
             </div>
           </motion.div>
         </AnimatePresence>
+      </div>
+
+      {/* Navigation Controls - Positioned Above Content */}
+      <div className="absolute inset-0 pointer-events-none z-30">
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-auto p-2 bg-black/30 rounded-full hover:bg-black/50 transition-colors"
+        >
+          <ChevronLeft className="text-white w-8 h-8" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-auto p-2 bg-black/30 rounded-full hover:bg-black/50 transition-colors"
+        >
+          <ChevronRight className="text-white w-8 h-8" />
+        </button>
+
+        {/* Slide Indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 pointer-events-auto">
+          {slider.slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${index === currentIndex
+                ? "bg-white w-6"
+                : "bg-white/50 hover:bg-white/70"
+                }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
