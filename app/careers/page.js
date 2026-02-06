@@ -113,11 +113,10 @@ const CareersContent = () => {
             <motion.button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`px-6 py-2 rounded-lg text-lg font-semibold ${
-                activeTab === tab
+              className={`px-6 py-2 rounded-lg text-lg font-semibold ${activeTab === tab
                   ? "bg-green-600 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              } transition-all duration-300 ease-in-out`}
+                } transition-all duration-300 ease-in-out`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -175,7 +174,7 @@ const CareersContent = () => {
                     className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden"
                   >
                     <Image
-                      src="/images/thumbnail.jpg"
+                      src="/images/thumbnail.png"
                       width={400}
                       height={250}
                       alt="sdg image"

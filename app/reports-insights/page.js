@@ -119,11 +119,10 @@ const ReportsAndInsightsContent = () => {
             <motion.button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`px-6 py-2 rounded-lg text-lg font-semibold ${
-                activeTab === tab
+              className={`px-6 py-2 rounded-lg text-lg font-semibold ${activeTab === tab
                   ? "bg-green-600 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              } transition-all duration-300`}
+                } transition-all duration-300`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -212,13 +211,13 @@ const ReportsAndInsightsContent = () => {
                       )}
                       {(activeTab === "Publications" ||
                         activeTab === "Brochures") && (
-                        <button
-                          onClick={() => setSelectedPublication(item)}
-                          className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
-                        >
-                          View More
-                        </button>
-                      )}
+                          <button
+                            onClick={() => setSelectedPublication(item)}
+                            className="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
+                          >
+                            View More
+                          </button>
+                        )}
                     </div>
                   </motion.div>
                 ))}
@@ -300,7 +299,7 @@ const ReportsAndInsights = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="relative h-80 bg-cover bg-center"
-        style={{ backgroundImage: `url('/images/thumbnail.jpg')` }}
+        style={{ backgroundImage: `url('/images/thumbnail.png')` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center">
           <h1 className="text-5xl text-white font-bold mb-4">
